@@ -6,7 +6,7 @@
       {
         fieldName: 'Project Title',
         maxLength: 60,
-        minLength: 10
+        minLength: 5
       }
     )" v-model="project.title" title="Project Title" class="mb-4" label="Project Title" variant="outlined"
       hide-details="auto"></v-text-field>
@@ -56,7 +56,8 @@ export default {
       'Dart', 'Git', 'GitHub', 'GitLab', 'Bitbucket', 'Jira', 'Trello', 'Asana', 'Notion', 'Slack', 'Discord',
       'Zoom', 'Google Meet', 'Microsoft Teams', 'Zoom', 'Slack', 'Discord', 'Jira', 'Trello', 'Asana', 'Notion',
       'Commit Lint', 'Code Review', 'Pair Programming', 'Agile', 'Scrum', 'Kanban', 'Lean', 'Waterfall', 'Test-Driven Development',
-      'Commit messages', 'Code reviews', 'Pair programming', 'Agile', 'Scrum', 'Kanban', 'Lean', 'Waterfall', 'Test-driven development'
+      'Commit messages', 'Code reviews', 'Pair programming', 'Agile', 'Scrum', 'Kanban', 'Lean', 'Waterfall', 'Test-driven development',
+      'express.js', 'expressjs'
     ].sort());
 
     const project = ref<ProjectType>({

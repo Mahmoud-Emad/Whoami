@@ -96,17 +96,19 @@ export default {
 
           // Load only the last inserted 2 projects if their type is project
           const responseData = result.data
-          const isProject = (project: ProjectType) => project.type == 'project';
-          const projectsData = responseData.filter((project: ProjectType) => isProject(project));
+          const isProject = (project: ProjectType) => project.type.toLowerCase() == 'project';
+          const projectsData = responseData.filter((project: ProjectType) => isProject(project)) as ProjectType[];
 
+          console.log(projectsData)
           if (projectsData.length > 2) {
-            projects.value = projectsData.slice(-2);
+            // Get the last 2 projects in the array
+            projects.value = projectsData.slice(Math.max(projectsData.length - 2, 0))
           } else {
             projects.value = projectsData;
           }
 
           // Load only the last inserted 2 packages
-          const isOpenSource = (project: ProjectType) => project.type == 'Open Source';
+          const isOpenSource = (project: ProjectType) => project.type.toLowerCase() == 'open source';
           const openSourceProjects = responseData.filter((project: ProjectType) => isOpenSource(project));
 
           if (openSourceProjects.length > 2) {

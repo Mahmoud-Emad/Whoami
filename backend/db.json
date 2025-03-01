@@ -78,6 +78,22 @@
       "description": "An INI format parser and serializer for Python. Sections are treated as nested dictionaries. Items before the first heading are saved directly on the object.",
       "background": "transparent",
       "type": "Open Source"
+    },
+    {
+      "id": 5,
+      "createdAt": "2025-03-01T15:13:04.215Z",
+      "status": "created",
+      "title": "WhoAmI",
+      "link": "https://github.com/Mahmoud-Emad/Whoami",
+      "tags": [
+        "Vue",
+        "express.js",
+        "TypeScript",
+        "JavaScript"
+      ],
+      "description": "Whoami - A Customizable Portfolio, Whoami is a fully customizable portfolio template that showcases personal details, projects, contact info, problem-solving challenges, blog posts, and more. It includes an admin dashboard, secured with an admin signature, allowing easy customization and management. Clone, modify, and make it your own!",
+      "background": "transparent",
+      "type": "Project"
     }
   ],
   "articles": [
