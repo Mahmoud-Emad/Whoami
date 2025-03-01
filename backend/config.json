@@ -1,17 +1,19 @@
 {
   "configuration": {
-    "githubURL": "https://github.com/Mahmoud-Emad/",
-    "adminDashboard": true,
+    "githubURL": "",
+    "adminDashboard": false,
     "multipleThemes": true,
     "enableSearch": true,
     "searchModels": [
       "guestbooks",
-      "posts"
+      "posts",
+      "projects",
+      "articles"
     ]
   },
   "security": {
-    "debug": true,
-    "adminFingerprintSignature": "c08a6ee5d602cd7916c8b7d3cef8af98"
+    "debug": false,
+    "adminFingerprintSignature": ""
   },
   "theme": {
     "defaultTheme": "dark"
