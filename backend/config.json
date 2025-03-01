@@ -1,0 +1,23 @@
+{
+  "configuration": {
+    "githubURL": "https://github.com/Mahmoud-Emad/",
+    "adminDashboard": true,
+    "multipleThemes": true,
+    "enableSearch": true,
+    "searchModels": [
+      "guestbooks",
+      "posts"
+    ]
+  },
+  "security": {
+    "debug": true,
+    "adminFingerprintSignature": "c08a6ee5d602cd7916c8b7d3cef8af98"
+  },
+  "theme": {
+    "defaultTheme": "dark"
+  },
+  "server": {
+    "host": "localhost",
+    "port": 3000
+  }
+}

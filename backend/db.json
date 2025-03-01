@@ -1,0 +1,117 @@
+{
+  "guestbooks": [
+    {
+      "id": 1,
+      "createdAt": "2025-02-26T12:38:20.379Z",
+      "status": "created",
+      "name": "Mahmoud Emad",
+      "message": "I really like it btw, can i book one for me?"
+    },
+    {
+      "id": 2,
+      "createdAt": "2025-02-26T13:14:39.979Z",
+      "status": "created",
+      "name": "Eslam Emad",
+      "website": "islam.com",
+      "message": "testme.comtestme.comtestme.comtestme.com"
+    }
+  ],
+  "posts": [],
+  "projects": [
+    {
+      "id": 1,
+      "createdAt": "2025-02-25T16:46:25.859Z",
+      "status": "created",
+      "title": "CSHR",
+      "link": "https://github.com/codescalers/CSHR",
+      "tags": [
+        "Vue",
+        "Django",
+        "Python",
+        "JavaScript"
+      ],
+      "description": "CRM project mainly for the HR department to manage the employees.",
+      "background": "transparent",
+      "type": "project"
+    },
+    {
+      "id": 2,
+      "createdAt": "2025-02-25T16:49:53.715Z",
+      "status": "created",
+      "title": "Switchkeys",
+      "link": "https://github.com/Mahmoud-Emad/Switchkeys",
+      "tags": [
+        "Django",
+        "Go",
+        "Dart",
+        "NodeJS"
+      ],
+      "description": "SwitchKeys: Streamline feature flag management. Effortlessly toggle features for A/B testing phased rollouts & rapid experimentation. Drive innovation with ease.",
+      "background": "transparent",
+      "type": "project"
+    },
+    {
+      "id": 3,
+      "createdAt": "2025-02-25T16:51:29.940Z",
+      "status": "created",
+      "title": "Commi AI",
+      "link": "https://github.com/Mahmoud-Emad/commi",
+      "tags": [
+        "Git",
+        "GitHub",
+        "Commit messages",
+        "Artificial Intelligence"
+      ],
+      "description": "Commi is an AI-powered tool that automatically generates Git commit messages based on your code changes.",
+      "background": "transparent",
+      "type": "Open Source"
+    },
+    {
+      "id": 4,
+      "createdAt": "2025-02-25T16:52:02.151Z",
+      "status": "created",
+      "title": "INI-Parser",
+      "link": "https://github.com/Mahmoud-Emad/INI-Parser/",
+      "tags": [
+        "Python"
+      ],
+      "description": "An INI format parser and serializer for Python. Sections are treated as nested dictionaries. Items before the first heading are saved directly on the object.",
+      "background": "transparent",
+      "type": "Open Source"
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "createdAt": "2025-02-28T15:26:41.934Z",
+      "status": "created",
+      "link": "https://thehubpublication.com/when-you-accept-yourself-everything-else-falls-into-place-ecd635114bd0",
+      "title": "When You Accept Yourself, Everything Else Falls Into Place",
+      "description": ""
+    },
+    {
+      "id": 1,
+      "createdAt": "2025-02-28T15:26:41.934Z",
+      "status": "created",
+      "link": "https://medium.com/bytebytego-system-design-alliance/system-design-blueprint-the-ultimate-guide-e27b914bf8f1",
+      "title": "System Design Blueprint: The Ultimate Guide",
+      "description": ""
+    },
+    {
+      "id": 1,
+      "createdAt": "2025-02-28T15:26:41.934Z",
+      "status": "created",
+      "link": "https://sayedalesawy.hashnode.dev/high-performance-mysql-ch5-indexing-for-high-performance",
+      "title": "High Performance MySQL [Ch.5: Indexing for High Performance]",
+      "description": ""
+    },
+    {
+      "id": 4,
+      "createdAt": "2025-02-28T15:28:41.507Z",
+      "status": "created",
+      "link": "https://medium.com/@mahmmoud.hassanein/introducing-commi-the-ai-powered-git-commit-message-generator-db5c643210f3",
+      "title": "Introducing Commi: The AI-Powered Git Commit Message Generator",
+      "description": ""
+    }
+  ]
+}
