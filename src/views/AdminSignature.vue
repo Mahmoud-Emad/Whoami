@@ -89,21 +89,27 @@ export default {
 
     const login = () => {
       apiLoadingStore.setLoading(true);
-      const hashedUserInputSignature = md5(signature.value)
-      const savedSignature = siteSettings.value.security.adminFingerprintSignature
-      if (!validateAdminSignature(savedSignature, hashedUserInputSignature)) {
-        showInvalidAlert.value = true
-        return
+      try {
+        const hashedUserInputSignature = md5(signature.value)
+        console.log(hashedUserInputSignature)
+        const savedSignature = siteSettings.value.security.adminFingerprintSignature
+        if (!validateAdminSignature(savedSignature, hashedUserInputSignature)) {
+          showInvalidAlert.value = true
+          return
+        }
+
+        if (enableAdminDashboard.value) {
+          siteSettings.value.configuration.adminDashboard = true
+          settingsStore.saveSettings(siteSettings.value)
+        }
+        showInvalidAlert.value = false
+        window.location.href = '/admin-dashboard'
+      } catch (error) {
+        console.error("Failed to validate signature:", error);
+      } finally {
+        apiLoadingStore.setLoading(false);
       }
 
-      if (enableAdminDashboard.value) {
-        siteSettings.value.configuration.adminDashboard = true
-        settingsStore.saveSettings(siteSettings.value)
-      }
-
-      showInvalidAlert.value = false
-      apiLoadingStore.setLoading(false);
-      window.location.href = '/admin-dashboard'
     }
 
     const signatureRules = () => [

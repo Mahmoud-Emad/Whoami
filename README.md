@@ -29,6 +29,10 @@ A customized portfolio website built with Vue 3 and TypeScript, featuring a full
 - Node.js
 - File-based storage (JSON)
 
+### Default Admin Signature
+
+in your first-time run, the default admin signature is `admin`.
+
 ## Setup
 
 1. Clone the repository
