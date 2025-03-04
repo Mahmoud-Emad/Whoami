@@ -1,6 +1,34 @@
 const express = require("express");
 const fs = require("fs").promises;
 const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
+
+// Configure multer for handling file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './backend/uploads/');
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024 // 5MB limit
+    },
+    fileFilter: function (req, file, cb) {
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (allowedTypes.includes(file.mimetype)) {
+            cb(null, true);
+        } else {
+            cb(new Error('Invalid file type. Only JPEG, PNG and GIF are allowed.'));
+        }
+    }
+});
 
 const app = express();
 const PORT = 3000;
@@ -54,6 +82,7 @@ const loggerMiddleware = (req, res, next) => {
 app.use(express.json());
 app.use(cors());
 app.use(loggerMiddleware);
+app.use('/uploads', express.static('backend/uploads')); // Serve uploaded files
 
 // Function to initialize database
 const initializeDatabase = async () => {
@@ -324,7 +353,7 @@ app.get("/articles/:id", async (req, res) => {
 app.get("/posts", async (req, res) => {
     try {
         const dbData = await readDatabase();
-        res.json(dbData.posts);
+        res.json({ data: dbData.posts, total: dbData.posts.length });
     } catch (error) {
         log(`Failed to read posts: ${error.message}`, 'error');
         res.status(500).json({ error: error.message });
@@ -334,11 +363,13 @@ app.get("/posts", async (req, res) => {
 app.post("/posts", async (req, res) => {
     try {
         const dbData = await readDatabase();
-        dbData.posts.push(req.body);
+        const posts = [...dbData.posts];
+        const newEntry = { id: posts.length + 1, createdAt: new Date().toISOString(), status: "created", ...req.body };
+        dbData.posts.push(newEntry);
         await writeDatabase(dbData);
-        res.json({ message: "Post added!", data: req.body });
+        res.json({ message: "Post added!", data: newEntry });
     } catch (error) {
-        log(`Failed to add post: ${error.message}`, 'error');
+        log(`Failed to post blog post: ${error.message}`, 'error');
         res.status(500).json({ error: error.message });
     }
 });
@@ -357,6 +388,23 @@ app.get("/posts/:id", async (req, res) => {
     }
 });
 
+
+// Image upload endpoint
+app.post("/upload", upload.single('image'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: "No file uploaded" });
+        }
+        const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+        res.json({
+            message: "File uploaded successfully",
+            url: imageUrl
+        });
+    } catch (error) {
+        log(`Failed to upload file: ${error.message}`, 'error');
+        res.status(500).json({ error: error.message });
+    }
+});
 
 // Start server
 const startServer = async () => {

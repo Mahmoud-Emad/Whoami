@@ -10,20 +10,29 @@
     <div class="projects pa-2">
       <LoadingComponent :type="'card'" :content-length="2" :content-name="'Last Projects'"
         v-if="apiLoadingStore.isLoading()" />
-      <v-row v-else>
-        <v-col xl='6' cols="12" md="6" sm="6" xs="12" v-for="(project, index) in projects" :key="index"
-          class="d-flex justify-start align-center">
-          <ProjectCard :project="project" />
-        </v-col>
-      </v-row>
-      <small class="ml-4">
-        > Check out my
-        <a href="https://github.com/Mahmoud-Emad" target="_blank"
-          style="font-family: system-ui !important; text-decoration: underline">
-          GitHub profile
-        </a>
-        for more projects.
-      </small>
+      <div v-else>
+        <div v-if="projects.length">
+          <v-row>
+            <v-col xl='6' cols="12" md="6" sm="6" xs="12" v-for="(project, index) in projects" :key="index"
+              class="d-flex justify-start align-center">
+              <ProjectCard :project="project" />
+            </v-col>
+          </v-row>
+          <small class="ml-4">
+            > Check out my
+            <a href="https://github.com/Mahmoud-Emad" target="_blank"
+              style="font-family: system-ui !important; text-decoration: underline">
+              GitHub profile
+            </a>
+            for more projects.
+          </small>
+        </div>
+        <div class="" v-else>
+          <v-alert type="info" variant="tonal" class="mb-4">
+            No projects found
+          </v-alert>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -39,20 +48,29 @@
     <div class="projects pa-2">
       <LoadingComponent :type="'card'" :content-length="2" :content-name="'Open Source Contributions'"
         v-if="apiLoadingStore.isLoading()" />
-      <v-row v-else>
-        <v-col xl='6' cols="12" md="6" sm="6" xs="12" v-for="(package_, index) in opensource" :key="index"
-          class="d-flex justify-start align-center">
-          <ProjectCard :project="package_" />
-        </v-col>
-      </v-row>
-      <small class="ml-4">
-        > Check out my
-        <a href="https://github.com/Mahmoud-Emad" target="_blank"
-          style="font-family: system-ui !important; text-decoration: underline">
-          GitHub profile
-        </a>
-        for more packages.
-      </small>
+      <div v-else>
+        <div v-if="opensource.length">
+          <v-row>
+            <v-col xl='6' cols="12" md="6" sm="6" xs="12" v-for="(package_, index) in opensource" :key="index"
+              class="d-flex justify-start align-center">
+              <ProjectCard :project="package_" />
+            </v-col>
+          </v-row>
+          <small class="ml-4">
+            > Check out my
+            <a href="https://github.com/Mahmoud-Emad" target="_blank"
+              style="font-family: system-ui !important; text-decoration: underline">
+              GitHub profile
+            </a>
+            for more packages.
+          </small>
+        </div>
+        <div class="" v-else>
+          <v-alert type="info" variant="tonal" class="mb-4">
+            No open source contributions found
+          </v-alert>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,8 +101,8 @@ export default {
     const opensource: Ref<ProjectType[]> = ref([]);
 
     const loadProjects = async () => {
-      apiLoadingStore.setLoading(true)
       try {
+        apiLoadingStore.setLoading(true)
         const serverUrl = import.meta.env.VITE_SERVER_URL;
         const res = await fetch(`${serverUrl}/projects`);
         const result = await res.json();
@@ -121,8 +139,9 @@ export default {
         }
       } catch (error) {
         console.error("Error adding project:", error);
+      } finally {
+        apiLoadingStore.setLoading(false)
       }
-      apiLoadingStore.setLoading(false)
     }
 
     return {

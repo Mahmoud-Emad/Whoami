@@ -6,7 +6,7 @@
       {
         fieldName: 'Project Title',
         maxLength: 60,
-        minLength: 5
+        minLength: 4
       }
     )" v-model="project.title" title="Project Title" class="mb-4" label="Project Title" variant="outlined"
       hide-details="auto"></v-text-field>
@@ -39,9 +39,11 @@
 import { ref } from 'vue';
 import { ProjectType } from '../../types';
 import { nameRules, websiteRules, longTextRules, validateProjectTagsRules } from '../../utils';
+import { useAPILoading } from '../../store';
 
 export default {
   setup() {
+    const apiLoading = useAPILoading();
     const validForm = ref(false);
     const responseType = ref('success');
     const responseMessage = ref();
@@ -71,6 +73,7 @@ export default {
 
     const createNewProject = async (project: ProjectType) => {
       try {
+        apiLoading.setLoading(true)
         const serverUrl = import.meta.env.VITE_SERVER_URL;
         const res = await fetch(`${serverUrl}/projects`, {
           method: "POST",
@@ -90,6 +93,12 @@ export default {
         }
       } catch (error) {
         console.error("Failed to write guestbook:", error);
+      } finally {
+        apiLoading.setLoading(false)
+        setTimeout(() => {
+          responseType.value = 'success';
+          responseMessage.value = undefined;
+        }, 3000);
       }
     }
 

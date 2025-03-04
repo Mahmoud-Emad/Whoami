@@ -1,7 +1,7 @@
 {
   "configuration": {
     "githubURL": "",
-    "adminDashboard": false,
+    "adminDashboard": true,
     "multipleThemes": true,
     "enableSearch": true,
     "searchModels": [

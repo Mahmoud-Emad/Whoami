@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/Home.vue';
 import ContactView from '../views/Contact.vue';
 import ProjectsView from '../views/Projects.vue';
+import BlogView from '../views/Blog.vue';
 import GuestbookView from '../views/Guestbook.vue';
 import MoreView from '../views/More.vue';
 import AdminSignatureView from '../views/AdminSignature.vue';
@@ -27,6 +28,12 @@ const router = createRouter({
             name: 'projects',
             component: ProjectsView,
             meta: { title: 'Projects - Mahmoud Emad' },
+        },
+        {
+            path: '/blog',
+            name: 'blog',
+            component: BlogView,
+            meta: { title: 'blog - Mahmoud Emad' },
         },
         {
             path: '/guestbook',

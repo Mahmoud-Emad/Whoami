@@ -3,14 +3,14 @@
     <div class="section mb-4">
       <h1>Projects</h1>
       <v-alert class="pa-2 mt-2 mb-2 head-card">
-        📸 These are some of my projects, Check them on
+        💻 These are some of my projects, Check them on
         <strong>
           <a target="_blank" href="https://github.com/Mahmoud-Emad?tab=repositories">Github</a>
         </strong>
         to see the source code if supported.
       </v-alert>
     </div>
-    <LoadingComponent :content-length="4" :content-name="'Projects'" v-if="apiLoadingStore.isLoading()" />
+    <LoadingComponent type="card" :content-length="4" :content-name="'Projects'" v-if="apiLoadingStore.isLoading()" />
     <div class="projects pa-2 mb-4" v-else>
       <v-row>
         <v-col cols="12" xl='6' md="6" sm="6" xs="12" v-for="(project, index) in projects" :key="index"

@@ -1,5 +1,5 @@
 <template>
-  <div class="c-footer">
+  <div class="c-footer mt-5 mb-2">
     <small class="footer-text">
       © Omdanii 2025 •
       <router-link to="#">Support</router-link> •

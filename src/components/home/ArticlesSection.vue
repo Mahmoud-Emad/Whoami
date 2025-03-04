@@ -5,25 +5,28 @@
       v-if="apiLoadingStore.isLoading()" />
 
     <div class="article pa-2" v-else>
-      <v-row v-for="(article, index) in articles" :key="index" class="d-flex justify-space-between align-center">
-        <v-col cols="8" class="d-flex justify-start align-center">
-          <a style="font-family: system-ui !important;" target="_blank" :href="article.link" class="article-link">
-            <v-icon color="primary" size="20">
-              mdi-note-edit-outline
-            </v-icon>
-            {{ article.title.length > 60 ? article.title.slice(0, 60) + '...' : article.title }}
-          </a>
-        </v-col>
-        <v-col cols="4" class="d-flex justify-end align-center">
-          <p class="text-light-gray">{{ formatData(article.createdAt!) }}</p>
-        </v-col>
-      </v-row>
+      <div v-if="articles.length">
+        <v-row v-for="(article, index) in articles" :key="index" class="d-flex justify-space-between align-center">
+          <v-col cols="8" class="d-flex justify-start align-center">
+            <a style="font-family: system-ui !important;" target="_blank" :href="article.link" class="article-link">
+              <v-icon color="primary" size="20">
+                mdi-note-edit-outline
+              </v-icon>
+              {{ article.title.length > 60 ? article.title.slice(0, 60) + '...' : article.title }}
+            </a>
+          </v-col>
+          <v-col cols="4" class="d-flex justify-end align-center">
+            <p class="text-light-gray">{{ formatData(article.createdAt!) }}</p>
+          </v-col>
+        </v-row>
+      </div>
+      <div class="" v-else>
+        <v-alert type="info" variant="tonal" class="mb-4">
+          No articles found
+        </v-alert>
+      </div>
       <div class="long-line opacity-80 mt-2" />
     </div>
-    <small>
-      The pinned articles are saved in your browser's local storage, also it should be at the top of
-      the list.
-    </small>
   </div>
 </template>
 
@@ -47,6 +50,7 @@ export default {
 
     const apiLoadingStore = useAPILoading()
     const articles: Ref<ArticleType[]> = ref([]);
+    const page = ref(1)
 
     const loadArticles = async () => {
       apiLoadingStore.setLoading(true)
@@ -72,6 +76,7 @@ export default {
     return {
       apiLoadingStore,
       articles,
+      page,
       formatData,
     };
   },
