@@ -1,13 +1,13 @@
 <template>
   <div class="articles mt-3">
-    <h2 class="title mb-4" title="Favourite Articles">🌟 Favourite Articles</h2>
+    <h2 class="title" title="Favourite Articles">🌟 Favourite Articles</h2>
     <LoadingComponent type="article" :content-length="2" :content-name="'Favourite Articles'"
       v-if="apiLoadingStore.isLoading()" />
 
     <div class="article pa-2" v-else>
       <div v-if="articles.length">
         <v-row v-for="(article, index) in articles" :key="index" class="d-flex justify-space-between align-center">
-          <v-col cols="8" class="d-flex justify-start align-center">
+          <v-col :cols="display.mdAndUp.value ? 8 : 12" class="d-flex justify-start align-center">
             <a style="font-family: system-ui !important;" target="_blank" :href="article.link" class="article-link">
               <v-icon color="primary" size="20">
                 mdi-note-edit-outline
@@ -15,7 +15,7 @@
               {{ article.title.length > 60 ? article.title.slice(0, 60) + '...' : article.title }}
             </a>
           </v-col>
-          <v-col cols="4" class="d-flex justify-end align-center">
+          <v-col v-if="display.mdAndUp.value" cols="4" class="d-flex justify-end align-center">
             <p class="text-light-gray">{{ formatData(article.createdAt!) }}</p>
           </v-col>
         </v-row>
@@ -37,6 +37,7 @@ import { ArticleType } from '../../types';
 import { useAPILoading } from '../../store';
 import LoadingComponent from '../LoadingComponent.vue';
 import { formatData } from '../../utils';
+import { useDisplay } from 'vuetify';
 
 
 export default {
@@ -44,6 +45,9 @@ export default {
   components: { LoadingComponent },
 
   setup() {
+    // Vuetify display utility
+    const display = useDisplay();
+
     onMounted(async () => {
       await loadArticles();
     });
@@ -76,6 +80,7 @@ export default {
     return {
       apiLoadingStore,
       articles,
+      display,
       page,
       formatData,
     };

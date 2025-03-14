@@ -21,18 +21,19 @@
         :style="{ background: 'transparent !important' }">
         <v-card-title>
           <p class="article-link">{{ post.title }}</p>
-          <small class="published-date">Published on: {{ formatPostDate(post.createdAt) }}</small>
+          <small class="published-date">Published on: {{ formatPostDate(post.createdAt || '') }}</small>
         </v-card-title>
-        <v-btn @click="toggleContent(post.id)" title="Read Blog Post" class="mb-4 ml-3" color="primary" variant="tonal">
-          {{ expandedPosts[post.id] ? 'Read Less' : 'Read More' }}
+        <v-btn @click="toggleContent(post.id || 0)" title="Read Blog Post" class="mb-4 ml-3" color="primary"
+          variant="tonal">
+          {{ expandedPosts[post.id || 0] ? 'Read Less' : 'Read More' }}
         </v-btn>
-        <v-card-text class="mt-4" v-if="expandedPosts[post.id]">
+        <v-card-text class="mt-4" v-if="expandedPosts[post.id || 0]">
           <div class="markdown-content">
             <VMarkdownView :content="post.content" mode="transparent" />
           </div>
-          <v-btn v-if="post.content.length > 1500" @click="toggleContent(post.id)" title="Read Blog Post"
+          <v-btn v-if="post.content.length > 1500" @click="toggleContent(post.id || 0)" title="Read Blog Post"
             color="primary" class="mt-4" variant="tonal">
-            {{ expandedPosts[post.id] ? 'Read Less' : 'Read More' }}
+            {{ expandedPosts[post.id || 0] ? 'Read Less' : 'Read More' }}
           </v-btn>
         </v-card-text>
       </v-card>

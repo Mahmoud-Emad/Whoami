@@ -1,6 +1,6 @@
 <template>
-  <div class="last-projects mt-4">
-    <h2 class="title mb-4" title="Last Projects">🎨 Last Projects</h2>
+  <div class="last-projects">
+    <h2 class="title" title="Last Projects">🎨 Last Projects</h2>
     <div class="pa-2">
       <p class="text-light-gray">
         Checkout my last projects.
@@ -38,7 +38,7 @@
 
   <!-- Open Source contributions -->
   <div class="open-source mt-3">
-    <h2 class="title mb-4" title="Open Source Contributions">🌟 Open Source Contributions</h2>
+    <h2 class="title" title="Open Source Contributions">🌟 Open Source Contributions</h2>
     <div class="pa-2">
       <p class="text-light-gray">
         Contributing to open source projects is a great way to learn and grow as a developer.

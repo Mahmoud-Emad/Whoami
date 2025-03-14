@@ -1,7 +1,7 @@
 <template>
   <!-- Problem Solving -->
   <div class="problem-solving mt-3">
-    <h2 class="title mb-4" title="Problem Solving">🧠 Problem Solving</h2>
+    <h2 class="title" title="Problem Solving">🧠 Problem Solving</h2>
     <div class="pa-2">
       <p class="text-light-gray">
         I have a strong passion for problem-solving and I'm always looking for new challenges to

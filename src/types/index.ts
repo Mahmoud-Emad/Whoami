@@ -54,3 +54,11 @@ export type PostType = {
   content: string,
   createdAt?: string
 }
+
+export type NavLink = {
+  path: string,
+  text: string,
+  emoji: string,
+  title: string,
+  show: boolean,
+}
