@@ -117,7 +117,6 @@ export default {
           const isProject = (project: ProjectType) => project.type.toLowerCase() == 'project';
           const projectsData = responseData.filter((project: ProjectType) => isProject(project)) as ProjectType[];
 
-          console.log(projectsData)
           if (projectsData.length > 2) {
             // Get the last 2 projects in the array
             projects.value = projectsData.slice(Math.max(projectsData.length - 2, 0))

@@ -25,7 +25,6 @@
           No articles found
         </v-alert>
       </div>
-      <div class="long-line opacity-80 mt-2" />
     </div>
   </div>
 </template>

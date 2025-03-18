@@ -23,7 +23,7 @@
 
     <!-- Elsewhere Section -->
     <div class="section mb-2">
-      <h1>🌐 Elsewhere</h1>
+      <h2>🌐 Elsewhere</h2>
       <p class="mt-3">I can usually be found in most places as @omdanii. Some of the most interesting ones:</p>
       <ContactInfo :link="'https://github.com/Mahmoud-Emad/'" :linkText="'GitHub: @Mahmoud-Emad'" class="mr-2"
         :cols="display.mdAndUp.value" icon="mdi-github" />

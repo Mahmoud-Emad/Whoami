@@ -1,14 +1,19 @@
 <template>
   <div class="section mb-4">
-    <h2 v-if="title">{{ title }}</h2>
-    <p v-if="description" class="mt-3" v-html="description + (additionalText || '')"></p>
-    <v-card :class="`pa-2 mt-4 ${!display.mdAndUp.value ? 'responsive-info-card justify-start' : 'info-card'}`" outlined
+    <h2 v-if="title">
+      <span v-html="title">
+      </span>
+    </h2>
+    <p v-if="description" class="mb-2 mt-3" v-html="description + (additionalText || '')"></p>
+    <v-card :class="`pa-2 ${!display.mdAndUp.value ? 'responsive-info-card justify-start' : 'info-card'}`" outlined
       color="transparent"
       :style="{ border: '1px solid rgb(var(--v-theme-border-color))', borderRadius: '6px', fontSize: '12px' }">
-      <a v-if="icon" :href="link" target="_blank">
-        <v-icon>{{ icon }}</v-icon> {{ linkText }}
+      <a class="card-link-text" v-if="icon" :href="link" target="_blank">
+        <v-icon v-if="icon.startsWith('mdi-')">{{ icon }}</v-icon>
+        <span v-else>{{ icon }}</span>
+        {{ linkText }}
       </a>
-      <a v-else :href="link" target="_blank">
+      <a class="card-link-text" v-else :href="link" target="_blank">
         {{ linkText }}
       </a>
     </v-card>
@@ -66,5 +71,10 @@ export default {
   outline: none;
   font-family: serif !important;
   text-align: start !important;
+}
+
+.card-link-text {
+  font-family: system-ui;
+  font-size: 14px;
 }
 </style>

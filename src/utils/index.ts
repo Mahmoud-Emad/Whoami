@@ -28,12 +28,30 @@ const longTextRules = (options: {
     (v: string) => v && v.length <= options.maxLength || `${options.fieldName} must be at most ${options.maxLength} characters`
   ];
 
+const emailRules = (options: {
+  fieldName: string,
+  minLength: number,
+  maxLength: number
+}) => [
+    (v: string) => typeof v === 'string' || `${options.fieldName} must be a string.`,
+    (v: string) => !!v || `${options.fieldName} is required.`,
+    (v: string) => /.+@.+\..+/.test(v) || `${options.fieldName} is not valid.`,
+    (v: string) => v && v.length >= options.minLength || `${options.fieldName} must be at least ${options.minLength} characters`,
+    (v: string) => v && v.length <= options.maxLength || `${options.fieldName} must be at most ${options.maxLength} characters`
+  ];
+
+
 const websiteRules = () => [
   (v: string) => v && /^(https?:\/\/)?([\w\d-]+\.)+[a-z]{2,6}(\:[0-9]+)?(\/.*)?$/.test(v) || 'Please enter a valid URL'
 ];
 
 const antiBotRules = () => [
-  (v: string) => (v && v.toLowerCase() === 'mahmoud-emad' || v && v.toLowerCase() === 'omdanii') || 'Please enter the correct anti-bot value'
+  (v: string) => (
+    v && v.toLowerCase() === 'mahmoud-emad' ||
+    v && v.toLowerCase() === 'omdanii' ||
+    v && v.toLowerCase() === '@omdanii' ||
+    v && v.toLowerCase() === '@mahmoud-emad'
+  ) || 'Please enter the correct anti-bot value, which is "Mahmoud-Emad" or "Omdanii"',
 ];
 
 const validateProjectTagsRules = (tags: string[]) => [
@@ -60,4 +78,5 @@ export {
   websiteRules,
   antiBotRules,
   formatData,
+  emailRules,
 }

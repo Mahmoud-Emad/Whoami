@@ -7,6 +7,41 @@ body {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre,
+blockquote {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ol {
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+}
+
+
+pre {
+  font-family: monospace !important;
+  color: rgb(var(--v-theme-text-color)) !important;
+  background-color: rgb(var(--v-theme-border-color)) !important;
+  padding: 16px !important;
+  border-radius: 6px !important;
+  border-left: 5px solid rgb(var(--v-theme-text-color)) !important;
+}
+
+code {
+  font-family: monospace !important;
+  font-weight: 800 !important;
+  font-size: 13px !important;
+  color: rgb(var(--v-theme-text-color)) !important;
+}
+
 a {
   text-decoration: none;
   color: var(--v-theme-link-color);

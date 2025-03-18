@@ -34,6 +34,7 @@ import { useAPILoading, useSettingsStore } from '../store';
 import { SettingsType } from '../types';
 
 // Lazy-loaded form components
+const UserSettingsForm = defineAsyncComponent(() => import('../components/forms/UserSettingsForm.vue'));
 const ProjectForm = defineAsyncComponent(() => import('../components/forms/ProjectForm.vue'));
 const ArticleForm = defineAsyncComponent(() => import('../components/forms/ArticleForm.vue'));
 const PostForm = defineAsyncComponent(() => import('../components/forms/PostForm.vue'));
@@ -44,7 +45,7 @@ const SettingsForm = defineAsyncComponent(() => import('../components/forms/Sett
 
 export default {
   setup() {
-    const activeTab = ref('new-project');
+    const activeTab = ref('user-settings');
     const settingsStore = useSettingsStore();
     const apiLoadingStore = useAPILoading();
     const siteSettings = ref<SettingsType>({} as SettingsType);
@@ -59,6 +60,13 @@ export default {
     })
 
     const tabs = [
+      {
+        label: "User Settings",
+        value: "user-settings",
+        icon: "mdi-account",
+        component: UserSettingsForm,
+        description: "Use this form to configure user settings."
+      },
       {
         label: "Create a new project",
         value: "new-project",
@@ -107,7 +115,7 @@ export default {
         icon: "mdi-cog",
         component: SettingsForm,
         description: "Use this form to configure site settings."
-      }
+      },
     ];
 
     return { activeTab, tabs, siteSettings };

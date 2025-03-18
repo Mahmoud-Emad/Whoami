@@ -1,8 +1,12 @@
 <template>
   <div class="c-footer mt-5 mb-2">
+    <div class="long-line opacity-80 mb-3"></div>
     <small class="footer-text">
       © Omdanii 2025 •
       <router-link to="#">Support</router-link> •
+      <span v-if="siteSettings && siteSettings.configuration && siteSettings.configuration.adminDashboard">
+        <router-link to="/admin-dashboard">Admin Space</router-link> •
+      </span>
       <a v-if="siteSettings && siteSettings.configuration && siteSettings.configuration.multipleThemes" href="#"
         @click.prevent="toggleTheme">
         {{ isDark ? 'Light Mode' : 'Dark Mode' }}

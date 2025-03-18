@@ -1,5 +1,5 @@
 <template>
-  <div class="contact pa-3 ml-4">
+  <div class="page-body">
     <div class="section mb-4">
       <h1>Projects</h1>
       <v-alert class="pa-2 mt-2 mb-2 head-card">

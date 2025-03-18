@@ -91,7 +91,6 @@ export default {
       apiLoadingStore.setLoading(true);
       try {
         const hashedUserInputSignature = md5(signature.value)
-        console.log(hashedUserInputSignature)
         const savedSignature = siteSettings.value.security.adminFingerprintSignature
         if (!validateAdminSignature(savedSignature, hashedUserInputSignature)) {
           showInvalidAlert.value = true

@@ -243,4 +243,9 @@ export default defineComponent({
   background: rgb(var(--v-theme-border-color)) !important;
   transition: 0.5s;
 }
+
+.nav-link-item-bg-hover:hover {
+  background: rgb(var(--v-theme-border-color)) !important;
+  transition: 0.5s;
+}
 </style>

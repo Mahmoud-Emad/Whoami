@@ -16,7 +16,7 @@
     "adminFingerprintSignature": "21232f297a57a5a743894a0e4a801fc3"
   },
   "theme": {
-    "defaultTheme": "dark"
+    "defaultTheme": "light"
   },
   "server": {
     "host": "localhost",
